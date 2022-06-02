@@ -1,5 +1,4 @@
-# bioinfo1
-Project repository for bioinformatics 1
+# Term Project
 
 ## Data
 - CLIP-35L33G.bam : RNA 상에서 LIN28이 달라 붙은 위치와 서열을 알려준다.
@@ -27,9 +26,10 @@ Project repository for bioinformatics 1
 - 하나의 유전자의 여러곳에 CLIP tag가 있다.
 - 유전자마다 길이가 다르다.
 1. gencode.gtf에서 ER-Associated gene들만 추려내기. intron은 안 해도 된다.
-2. CLIP-35L33G.bam 중에서 1.에서 추려낸 유전자에 해당하는 alignment만 추려내기
-3. 2.에서 추려낸 alignment를 1.의 유전자별로 나누기.
-4. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기.
+  - ER associated (GO:0016021 U GO:0005576 U GO:0009986 U GO:0005794 U GO:0005783 - GO:0031966)
+3. CLIP-35L33G.bam 중에서 1.에서 추려낸 유전자에 해당하는 alignment만 추려내기
+4. 2.에서 추려낸 alignment를 1.의 유전자별로 나누기.
+5. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기.
 
 ### 2. LIN28a가 주로 달라붙는 위치가 유전자 별로 차이가 있는지 확인하기.
 - 만약 차이가 없으면 중단.

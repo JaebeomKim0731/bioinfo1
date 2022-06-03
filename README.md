@@ -38,11 +38,15 @@
 4. 2.에서 추려낸 alignment를 1.의 유전자별로 나누기.
 5. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기. -> 
 
-### 2. LIN28a가 주로 달라붙는 위치가 유전자 별로 차이가 있는지 확인하기.
-- 만약 차이가 없으면 중단.
+#### Issue
+1. I want to see the CLIP tag distribution along mRNA. But the BAM file is from genome alignment. How can I convert genome mappings to mRNA mapping?  
+2. How to handle alternative splicing? Some genes have multipe transcript info in the GTF file.
+
+### 2. LIN28a가 주로 달라붙는 위치가 유전자 별로 차이가 있는지 확인하기. -> Check whether meaningful clusters are generated or not.
+- 만약 차이가 없으면 중단. 
 
 ### 3. Ribosome density change upon *LIN28a* knockdown 구하기.
-Figure4 A,D 를 참고하여 진행한다.
+Figure4 A,D 를 참고하여 진행한다. -> Check if the average ribosome density change varies from cluster to cluster.
 
 ## Scripts
 ### extract-BAM.sh
@@ -52,3 +56,10 @@ Figure4 A,D 를 참고하여 진행한다.
 - OUTPUT: BAM files for each gene (ensembl_ID.bam)
 
 It extract alignments of each gene and store them separately. 
+
+### pileup-multiple-BAM.sh
+- INPUT: a list of BAM files
+- OUTPUT: pileup file for each BAM file
+
+It excutes 'mpileup' for each file in the provided list.
+

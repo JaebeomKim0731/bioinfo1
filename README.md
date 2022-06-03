@@ -42,3 +42,11 @@
 
 ### 3. Ribosome density change upon *LIN28a* knockdown 구하기.
 Figure4 A,D 를 참고하여 진행한다.
+
+## Scripts
+### extract-BAM.sh
+- INPUT
+  1. GTF file with only 'gene'
+  2. BAM file
+- OUTPUT: BAM files for each gene (ensembl_ID.bam)
+It extract alignments of each gene and store them separately. 

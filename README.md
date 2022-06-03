@@ -33,7 +33,7 @@
 1. gencode.gtf에서 ER-Associated gene들만 추려내기. intron은 안 해도 된다.
   - ER associated (GO:0016021 U GO:0005576 U GO:0009986 U GO:0005794 U GO:0005783 - GO:0031966)
   - 또는 https://hyeshik.qbio.io/binfo/mouselocalization-20210507.txt 의 데이터 사용
-2. CLIP-35L33G.bam 중에서 1.에서 추려낸 유전자에 해당하는 alignment만 추려내기
+2. CLIP-35L33G.bam 중에서 1.에서 추려낸 유전자에 해당하는 alignment만 추려내기 -> ./bash_script/extract-BAM.sh
 4. 2.에서 추려낸 alignment를 1.의 유전자별로 나누기.
 5. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기. -> 
 

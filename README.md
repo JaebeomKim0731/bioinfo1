@@ -22,14 +22,20 @@
 유전자 별로 (x, y) 값을 얻어서 scatter plot으로 나타낼 것이다. x 값은 LIN28a가 주로 달라붙는 위치, y 값은 Ribosome density change upon *LIN28a* knockdown 이다.
 
 ### 1. LIN28a가 주로 달라붙는 위치 구하기.
-- 하나의 유전자는 하나의 x 값을 가져야한다.
-- 하나의 유전자의 여러곳에 CLIP tag가 있다.
-- 유전자마다 길이가 다르다.
+- 하나의 유전자는 하나의 x 값을 가져야한다. -> It is hard to distribution of LIN28a with a single number -> Cluster genes according to LIN28a binding pattern and observe the correlation between the cluster and Ribosome densitity change.
+
+- 하나의 유전자의 여러곳에 CLIP tag가 있다. -> Use the distribution of CLIP tag of each gene.
+
+
+- 유전자마다 길이가 다르다. -> normalize the distribution by the length of genes.
+
+
 1. gencode.gtf에서 ER-Associated gene들만 추려내기. intron은 안 해도 된다.
   - ER associated (GO:0016021 U GO:0005576 U GO:0009986 U GO:0005794 U GO:0005783 - GO:0031966)
-3. CLIP-35L33G.bam 중에서 1.에서 추려낸 유전자에 해당하는 alignment만 추려내기
+  - 또는 https://hyeshik.qbio.io/binfo/mouselocalization-20210507.txt 의 데이터 사용
+2. CLIP-35L33G.bam 중에서 1.에서 추려낸 유전자에 해당하는 alignment만 추려내기
 4. 2.에서 추려낸 alignment를 1.의 유전자별로 나누기.
-5. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기.
+5. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기. -> 
 
 ### 2. LIN28a가 주로 달라붙는 위치가 유전자 별로 차이가 있는지 확인하기.
 - 만약 차이가 없으면 중단.

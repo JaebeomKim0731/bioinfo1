@@ -43,8 +43,7 @@
 
 #### Manipulating GTF
 Extract mRNA parts from GTF for the genes that coding integral membrane proteins.
-
-Data from https://hyeshik.qbio.io/binfo/mouselocalization-20210507.txt is used
+Protein localization data from https://hyeshik.qbio.io/binfo/mouselocalization-20210507.txt.
 1. Extract lines with "protein_coding" and without "processed_transcript"-> protein_coding.gtf
 2. One transcript(and its exon, CDS, UTR) for each gene. Ignore alternative splicing. -> one_transcript_for_each_gene.gtf
 3. Only the transcript, CDS, and UTR lines for integral membrane gene are extracted and stored separately for each gene. -> ./integral_membrane_gtf

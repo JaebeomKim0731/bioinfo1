@@ -21,7 +21,22 @@
 ## 분석 순서
 유전자 별로 (x, y) 값을 얻어서 scatter plot으로 나타낼 것이다. x 값은 LIN28a가 주로 달라붙는 위치, y 값은 Ribosome density change upon *LIN28a* knockdown 이다.
 
-### 1. LIN28a가 주로 달라붙는 위치 구하기.
+## 1. LIN28a binding location on mRNA for integral membrane protein
+### Step 1. Extract GTF lines corresponding to mRNA for integral membrane protein
+Extract mRNA parts from GTF for the genes that coding integral membrane proteins.
+Protein localization data from https://hyeshik.qbio.io/binfo/mouselocalization-20210507.txt.
+1. Extract lines with "protein_coding" and without "processed_transcript"-> protein_coding.gtf
+2. One transcript(and its exon, CDS, UTR) for each gene. Ignore alternative splicing. -> one_transcript_for_each_gene.gtf
+3. Only the transcript, CDS, and UTR lines for integral membrane gene are extracted and stored separately for each gene. -> ./integral_membrane_gtf
+
+### Step 2. Manipulating mpileup results so that they have coordinates on mRNA.
+1. Prepare mpileup for each "protein_coding" gene. 
+2. Extract lines of CDS and UTR range.
+3. Concatenate CDS and UTR so that their coordiates are continuous.
+4. Make each mpileup result start from 1.
+5. Devide the coordinates by the total length of mRNA. 
+
+
 - 하나의 유전자는 하나의 x 값을 가져야한다. -> It is hard to distribution of LIN28a with a single number -> Cluster genes according to LIN28a binding pattern and observe the correlation between the cluster and Ribosome densitity change.
 
 - 하나의 유전자의 여러곳에 CLIP tag가 있다. -> Use the distribution of CLIP tag of each gene.
@@ -38,22 +53,7 @@
 4. 2.에서 추려낸 alignment를 1.의 유전자별로 나누기.
 5. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기. -> 
 
-#### Issue
-1. I want to see the CLIP tag distribution along mRNA. But the BAM file is from genome alignment. How can I convert genome mappings to mRNA mapping?  
 
-#### Manipulating GTF
-Extract mRNA parts from GTF for the genes that coding integral membrane proteins.
-Protein localization data from https://hyeshik.qbio.io/binfo/mouselocalization-20210507.txt.
-1. Extract lines with "protein_coding" and without "processed_transcript"-> protein_coding.gtf
-2. One transcript(and its exon, CDS, UTR) for each gene. Ignore alternative splicing. -> one_transcript_for_each_gene.gtf
-3. Only the transcript, CDS, and UTR lines for integral membrane gene are extracted and stored separately for each gene. -> ./integral_membrane_gtf
-
-#### Manipulating mpileup result
-1. Prepare mpileup for each "protein_coding" gene. 
-2. Extract lines of CDS and UTR range.
-3. Concatenate CDS and UTR so that their coordiates are continuous.
-4. Make each mpileup result start from 1.
-5. Devide the coordinates by the total length of mRNA. 
 
 ### 2. LIN28a가 주로 달라붙는 위치가 유전자 별로 차이가 있는지 확인하기. -> Check whether meaningful clusters are generated or not.
 - 만약 차이가 없으면 중단. 

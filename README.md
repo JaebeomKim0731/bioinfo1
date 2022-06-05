@@ -25,18 +25,21 @@
 ### Step 1. Extract GTF lines corresponding to mRNA for integral membrane protein
 Extract mRNA parts from GTF for the genes that coding integral membrane proteins.
 Protein localization data from https://hyeshik.qbio.io/binfo/mouselocalization-20210507.txt.
-1. Extract lines with "protein_coding" and without "processed_transcript"-> protein_coding.gtf
-2. One transcript(and its exon, CDS, UTR) for each gene. Ignore alternative splicing. -> one_transcript_for_each_gene.gtf
-3. Only the transcript, CDS, and UTR lines for integral membrane gene are extracted and stored separately for each gene. -> ./integral_membrane_gtf
+1. Extract lines with "protein_coding" and without "processed_transcript"-> **protein_coding.gtf**
+2. One transcript(and its exon, CDS, UTR) for each gene. Ignore alternative splicing. -> **one_transcript_for_each_gene.gtf**
+3. Only the transcript, CDS, and UTR lines for integral membrane gene are extracted and stored separately for each gene. -> **./integral_membrane_gtf**
+---
 
-### Step 2. Manipulating mpileup results so that they have coordinates on mRNA.
-1. Prepare mpileup for each "protein_coding" gene. 
-2. Extract lines of CDS and UTR range.
-3. Concatenate CDS and UTR so that their coordiates are continuous.
-4. Make each mpileup result start from 1.
-5. Devide the coordinates by the total length of mRNA. 
+### Step 2. Get LIN28a binding coordinates on mRNA. 
+*CLIP-35L33G.bam* has coordinates on genome, but binding distribution on mRNA is needed.
+1. Extract alignments of integral membrane genes from 'CLIP-35L33G.bam' file -> **./analysis/bam-for-membrane-genes** and **extract-BAM.sh**
+2. Prepare mpileup for each "protein_coding" gene. 
+3. Extract lines of CDS and UTR range.
+4. Concatenate CDS and UTR so that their coordiates are continuous.
+5. Make each mpileup result start from 1.
+6. Devide the coordinates by the total length of mRNA. 
 
-
+---
 - 하나의 유전자는 하나의 x 값을 가져야한다. -> It is hard to distribution of LIN28a with a single number -> Cluster genes according to LIN28a binding pattern and observe the correlation between the cluster and Ribosome densitity change.
 
 - 하나의 유전자의 여러곳에 CLIP tag가 있다. -> Use the distribution of CLIP tag of each gene.

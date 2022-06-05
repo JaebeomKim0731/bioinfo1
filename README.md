@@ -40,7 +40,21 @@
 
 #### Issue
 1. I want to see the CLIP tag distribution along mRNA. But the BAM file is from genome alignment. How can I convert genome mappings to mRNA mapping?  
-2. How to handle alternative splicing? Some genes have multipe transcript info in the GTF file.
+
+#### Manipulating GTF
+Extract mRNA parts from GTF for the genes that coding integral membrane proteins.
+
+Data from https://hyeshik.qbio.io/binfo/mouselocalization-20210507.txt is used
+1. Extract lines with "protein_coding" and without "processed_transcript"-> protein_coding.gtf
+2. One transcript(and its exon, CDS, UTR) for each gene. Ignore alternative splicing. -> one_transcript_for_each_gene.gtf
+3. Only the transcript, CDS, and UTR lines for integral membrane gene are extracted and stored separately for each gene. -> ./integral_membrane_gtf
+
+#### Manipulating mpileup result
+1. Prepare mpileup for each "protein_coding" gene. 
+2. Extract lines of CDS and UTR range.
+3. Concatenate CDS and UTR so that their coordiates are continuous.
+4. Make each mpileup result start from 1.
+5. Devide the coordinates by the total length of mRNA. 
 
 ### 2. LIN28a가 주로 달라붙는 위치가 유전자 별로 차이가 있는지 확인하기. -> Check whether meaningful clusters are generated or not.
 - 만약 차이가 없으면 중단. 

@@ -64,7 +64,7 @@ Protein localization data from https://hyeshik.qbio.io/binfo/mouselocalization-2
 ### 3. Ribosome density change upon *LIN28a* knockdown 구하기.
 Figure4 A,D 를 참고하여 진행한다. -> Check if the average ribosome density change varies from cluster to cluster.
 
-## Scripts
+# Scripts
 ### extract-BAM.sh
 - INPUT
   1. GTF file with only 'gene'
@@ -73,9 +73,16 @@ Figure4 A,D 를 참고하여 진행한다. -> Check if the average ribosome dens
 
 It extract alignments of each gene and store them separately. 
 
+---
 ### pileup-multiple-BAM.sh
 - INPUT: a list of BAM files
 - OUTPUT: pileup file for each BAM file
 
 It excutes 'mpileup' for each file in the provided list.
 
+---
+### remove_intron_from_pileup.sh
+- INPUT: a list of pileup files
+- OUTPUT: pileup files without '>' or '<' in fifth field.
+
+> and < are originated from mapping to intron. So those are removed.

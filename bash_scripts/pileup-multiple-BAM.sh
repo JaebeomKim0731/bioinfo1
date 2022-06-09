@@ -5,7 +5,7 @@ BAM_list=$1
 awk '{print $0}' "${BAM_list}" | while read -r bam; do
 	geneID=$(echo ${bam} | cut -d. -f1)
 	echo $geneID
-	samtools mpileup "${bam}" > "${geneID}.pileup"
+	samtools mpileup -d 8000 "${bam}" > "../${geneID}.pileup"
 done
 
 

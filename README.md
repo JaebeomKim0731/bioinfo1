@@ -56,8 +56,6 @@ Protein localization data from https://hyeshik.qbio.io/binfo/mouselocalization-2
 4. 2.에서 추려낸 alignment를 1.의 유전자별로 나누기.
 5. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기. -> 
 
-
-# + & - strand
 ### 2. LIN28a가 주로 달라붙는 위치가 유전자 별로 차이가 있는지 확인하기. -> Check whether meaningful clusters are generated or not.
 - 만약 차이가 없으면 중단. 
 
@@ -86,3 +84,32 @@ It excutes 'mpileup' for each file in the provided list.
 - OUTPUT: pileup files without '>' or '<' in fifth field.
 
 > and < are originated from mapping to intron. So those are removed.
+---
+### extract-ensembl-membrane-gene.sh
+---
+### extract_GTF.sh
+---
+### extract-gtf-using-ensembl.sh
+---
+### extract_pileup.sh
+---
+### generate_CLIP_mRNA_table.sh
+---
+### normalize_length.sh
+---
+### one_transcript_per_gene.sh
+---
+### only_CDS+UTR.sh
+---
+### pileup-multiple-BAM.sh
+---
+### remove_intron_from_pileup.sh
+---
+### remove_intron_from_pileup_single.sh
+---
+### reverse_strand.sh
+---
+### sort_gtf_by_start_pos.sh
+---
+### sum_by_interval.sh
+---

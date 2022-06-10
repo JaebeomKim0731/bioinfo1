@@ -57,6 +57,7 @@ Protein localization data from https://hyeshik.qbio.io/binfo/mouselocalization-2
 5. 3.에서 얻은 유전자별 CLIP-tag들을 종합하여 LIN28a가 주로 달라붙는 위치 구하기. -> 
 
 ### 2. LIN28a가 주로 달라붙는 위치가 유전자 별로 차이가 있는지 확인하기. -> Check whether meaningful clusters are generated or not.
+-![githubID](./heatmap.pdf)
 - 만약 차이가 없으면 중단. 
 
 ### 3. Ribosome density change upon *LIN28a* knockdown 구하기.
